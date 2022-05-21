@@ -1,1 +1,1 @@
-trying to using Next.js for challenge chapter 7
+# Chapter 7 Challenge in trial
