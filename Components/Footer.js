@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     <div className={styles.container}>
         <div className={styles.description}>
-            FEJS 2 | Challenge 7 Layout with Next.js
+            FEJS 2 | Challenge 7
         </div>
     </div>
   )
