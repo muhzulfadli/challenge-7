@@ -8,11 +8,6 @@ const Featured = () => {
             <h1 className={styles.title}>Data List</h1>
           <div className={styles.wrapper}>
             <DataCard />
-            <DataCard />
-            <DataCard />
-            <DataCard />
-            <DataCard />
-            <DataCard />
         </div>
           
         </div>

@@ -4,8 +4,13 @@
     height: 75vh;
 }
 
+.title {
+    text-align: center;
+    margin-top: 20px;
+}
+
 .form{
-    margin: 20px auto;
+    margin: 10px auto;
     max-width: 500px;
     display: flex;
     flex-direction: column;
