@@ -1,32 +1,17 @@
-export default function App() {
-  const result = [
-    {
-      name: "shanu",
-      items: [
-        { label: "ak", value: 1 },
-        { label: "pk", value: 2 },
-        { label: "plk", value: 3 },
-        { label: "k", value: 5 },
-      ],
-    }
-  ];
+import React from 'react'
+import styles from '../styles/Testing.module.css'
 
-  return result.map((el) => {
-    return (
-      <div>
-        <h1>{el.name}</h1>
-        <div className="vart">
-          <div>
-            {el.items.map((e, index) => {
-              return (
-                <p>
-                  {e.label} : {e.value}
-                </p>
-              );
-            })}
-          </div>
-        </div>
+const testing = () => {
+  return (
+    <div className={styles.container}>
+      <div className={styles.card}>
+        <div className={styles.top}>Top</div>
+        <div className={styles.middle}>Middle</div>
+        <div className={styles.bottom}>Bottom</div>
       </div>
-    );
-  });
+      
+    </div>
+  )
 }
+
+export default testing

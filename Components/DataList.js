@@ -5,7 +5,7 @@ import DataCard from './DataCard'
 const Featured = () => {
   return (
       <div className={styles.container}>
-            <h1 className={styles.title}>Data List</h1>
+            <h1 className={styles.title}>Student Data</h1>
           <div className={styles.wrapper}>
             <DataCard />
         </div>
