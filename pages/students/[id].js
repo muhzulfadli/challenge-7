@@ -1,33 +1,50 @@
-import React, { useEffect, useState } from 'react'
-import { useRouter } from 'next/dist/client/router'
-import { setPDFNetworkStreamFactory } from 'pdfjs-dist/types/src/display/api'
+import React,{useEffect,useState} from 'react'
+import Head from 'next/head'
+import styles from '../../styles/Home.module.css'
+import axios from 'axios'
+import ZoomIn from 'react-medium-image-zoom'
+import { useRouter } from "next/router";
+import 'react-medium-image-zoom/dist/styles.css'
 
-export default function Student() {
-
-  const [student, setStudent] = useState(null)
+const Student = () => {
 
   const router = useRouter()
-  const { id }  = router.query
 
-  const fetchStudent = async () => {
-    const response = await fetch('https://fejs-c7-api.herokuapp.com/api/students/?populate=*');
-    const data = await response.json()
-    setCat (data);
-  }
+  // const {studentId} = router.query.id
 
-  useEffect ( () => {
-    fetchStudent()
-  }, [])
+  console.log(router.query)
 
-  return <div>
-    {student && (
-      <div className={style.container}>
-        <img src={student.attributes.photo.data.attributes.url} alt='' />
-        <div className={styles.desc}>
-          <h1>{student.attributes.firstname}{student.attributes.lastname}</h1>
-          <p>{student.attributes.location}</p>
-        </div>
+  const [students, setStudents] = useState([])
+
+  useEffect( () => {
+    axios.get(` https://fejs-c7-api.herokuapp.com/api/students/${router.query.id}?populate=*`)
+  .then( res => {
+    setStudents([res.data.data])
+  })
+  })
+
+  return (
+          <div className='justify-content-center'>
+        {students.map((student) => {
+          return(
+            <div key={student.id} style={{width:'300px'}} className="m-5">
+                  <div className={styles.card}>
+                  { student.attributes.photo.data !== null &&
+                        <ZoomIn>
+                          <img className="card-img-top rounded"src={student.attributes.photo.data.attributes.url} style={{width:"300px", height:"400px", border:"white"}} />
+                        </ZoomIn>
+                      }
+                      <div className="card-body">
+                        <p className="card-text">First Name: {student.attributes.firstname}</p>
+                        <p className="card-text">Last Name: {student.attributes.lastname}</p>
+                        <p className="card-text">Location: {student.attributes.location}</p>
+                      </div>
+                </div>
+              </div>
+          )
+      })}
       </div>
-    )}
-  </div>
+  )
 }
+
+export default Student

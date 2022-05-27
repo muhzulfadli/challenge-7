@@ -18,7 +18,12 @@ const input = () => {
     const inputFirstname = useRef()
     const inputLastname = useRef()
     const inputLocation = useRef()
-    const inputPhoto = useRef()
+    // const inputPhoto = useRef()
+
+    let formIsCompleted = false
+
+
+    
 
     const formSubmitHandler = async (event) => {
         event.preventDefault()
@@ -39,8 +44,7 @@ const input = () => {
 
     const res = await axios.post('https://fejs-c7-api.herokuapp.com/api/students/', formData)
     console.log(res.data)
-
-    }
+    } 
 
 
   return (
